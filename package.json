@@ -1,0 +1,14 @@
+{
+  "name": "mongodbv",
+  "version": "1.0.0",
+  "description": "mongodb",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.13.10"
+  }
+}
