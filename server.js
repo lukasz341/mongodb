@@ -37,10 +37,10 @@ userSchema.pre('save', function(next) {
     next();
 });
 
-//model based on userSchema
+// model based on userSchema
 const User = mongoose.model('User', userSchema);
 
-//instancje klasy User
+// instancje klasy User
 const lukasz = new User({
     name: 'Lukasz',
     username: 'Lukasz_the_boy',
