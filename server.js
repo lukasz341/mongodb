@@ -41,13 +41,13 @@ userSchema.pre('save', function(next) {
 const User = mongoose.model('User', userSchema);
 
 //instancje klasy User
-const kenny = new User({
-    name: 'Kenny',
-    username: 'Kenny_the_boy',
+const lukasz = new User({
+    name: 'Lukasz',
+    username: 'Lukasz_the_boy',
     password: 'password'
 });
 
-kenny.manify(function(err, name) {
+lukasz.manify(function(err, name) {
     if (err) throw err;
     console.log('Twoje nowe imię to: ' + name);
 });
@@ -84,7 +84,7 @@ const findAllUsers = function() {
 
 const findSpecificRecord = function() {
     // find specific record
-    return User.find({ username: 'Kenny_the_boy' }, function(err, res) {
+    return User.find({ username: 'Lukasz_the_boy' }, function(err, res) {
         if (err) throw err;
         console.log('Record you are looking for is ' + res);
     })
@@ -92,7 +92,7 @@ const findSpecificRecord = function() {
 
 const updadeUserPassword = function() {
     // update user password
-    return User.findOne({ username: 'Kenny_the_boy' })
+    return User.findOne({ username: 'Lukasz_the_boy' })
         .then(function(user) {
             console.log('Old password is ' + user.password);
             console.log('Name ' + user.name);
@@ -120,17 +120,17 @@ const findMarkAndDelete = function() {
     return User.findOne({ username: 'Mark_the_boy' })
         .then(function(user) {
             return user.remove(function() {
-                console.log('User successfully deleted');
+                console.log('Mark successfully deleted');
             });
         })
 }
 
-const findKennyAndDelete = function() {
+const findLukaszAndDelete = function() {
     // find specific user and delete
-    return User.findOne({ username: 'Kenny_the_boy' })
+    return User.findOne({ username: 'Lukasz_the_boy' })
         .then(function(user) {
             return user.remove(function() {
-                console.log('User successfully deleted');
+                console.log('Lukasz successfully deleted');
             });
         });
 }
@@ -140,17 +140,17 @@ const findBennyAndRemove = function() {
     return User.findOneAndRemove({ username: 'Benny_the_man' })
         .then(function(user) {
             return user.remove(function() {
-                console.log('User successfully deleted');
+                console.log('Benny successfully deleted');
             });
         });
 }
 
-Promise.all([kenny.save(), mark.save(), benny.save()])
+Promise.all([lukasz.save(), mark.save(), benny.save()])
     .then(findAllUsers)
     .then(findSpecificRecord)
     .then(updadeUserPassword)
     .then(updateUsername)
     .then(findMarkAndDelete)
-    .then(findKennyAndDelete)
+    .then(findLukaszAndDelete)
     .then(findBennyAndRemove)
     .catch(console.log.bind(console))
